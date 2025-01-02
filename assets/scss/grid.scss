@@ -3,6 +3,8 @@
     margin-right: auto;
 
     .left-sidebar {
+        margin-left: 7%; /* 经改动，原版没有 */
+        margin-right: 7%; /* 经改动，原版没有 */
         order: -3;
         max-width: var(--left-sidebar-max-width);
     }
@@ -21,19 +23,19 @@
         @include respond(md) {
             max-width: 1024px;
             --left-sidebar-max-width: 25%;
-            --right-sidebar-max-width: 30%;
+            --right-sidebar-max-width: 20%; /* 经改动，原值 30% */
         }
 
         @include respond(lg) {
             max-width: 1280px;
             --left-sidebar-max-width: 20%;
-            --right-sidebar-max-width: 30%;
+            --right-sidebar-max-width: 20%; /* 经改动，原值 30% */
         }
 
         @include respond(xl) {
             max-width: 1536px;
             --left-sidebar-max-width: 15%;
-            --right-sidebar-max-width: 25%;
+            --right-sidebar-max-width: 15%; /* 经改动，原值 25% */
         }
     }
 
