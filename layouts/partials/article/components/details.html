@@ -26,6 +26,8 @@
     {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
     {{ $showDate := not .Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
+    {{ $showLastModTime := .Params.lastModTime | default (.Site.Params.article.lastModTime) }}
+
     {{ if $showFooter }}
     <footer class="article-time">
         {{ if $showDate }}
@@ -33,6 +35,16 @@
                 {{ partial "helper/icon" "date" }}
                 <time class="article-time--published">
                     {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                </time>
+            </div>
+        {{ end }}
+
+        {{ if $showLastModTime }}
+            <div>
+                {{ partial "helper/icon" "date" }}
+                <time class = "article-time--lastmod">
+                    <div>Last modified:</div>
+                    <div>{{ .Lastmod.Year }}/{{ printf "%d" .Lastmod.Month }}/{{ .Lastmod.Day }}</div>
                 </time>
             </div>
         {{ end }}
