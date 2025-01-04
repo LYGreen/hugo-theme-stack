@@ -43,8 +43,13 @@
             <div>
                 {{ partial "helper/icon" "date" }}
                 <time class = "article-time--lastmod">
-                    <div>Last modified:</div>
-                    <div>{{ .Lastmod.Year }}/{{ printf "%d" .Lastmod.Month }}/{{ .Lastmod.Day }}</div>
+                    <div>
+                        <!-- 在 i18n 里的文件都有这个变量，那就用这个吧，不用给每个文件都新建一个变量了 -->
+                        {{ T "article.lastUpdatedOn"}}
+                    </div>
+                    <div>
+                        {{ .Lastmod.Year }}/{{ printf "%d" .Lastmod.Month }}/{{ .Lastmod.Day }}
+                    </div>
                 </time>
             </div>
         {{ end }}
