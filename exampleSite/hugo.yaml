@@ -18,6 +18,7 @@ languages:
         title: Example Site
         weight: 1
         params:
+            homepageTitle: "Example homepage title"
             sidebar:
                 subtitle: Example description
     zh-cn:
@@ -25,6 +26,7 @@ languages:
         title: 演示站点
         weight: 2
         params:
+            homepageTitle: "演示主页标题"
             sidebar:
                 subtitle: 演示说明
     ar:
@@ -33,6 +35,7 @@ languages:
         title: موقع تجريبي
         weight: 3
         params:
+            homepageTitle: "مثال على عنوان الصفحة الرئيسية"
             sidebar:
                 subtitle: وصف تجريبي
 
@@ -51,7 +54,13 @@ permalinks:
     post: /p/:slug/
     page: /:slug/
 
+frontmatter:
+    lastmod = [":fileModTime", "lastmod"]
+
 params:
+    # 网站图标，绝对路径以 '/' 开头，例如 /path/image.png。 path/image.png 和 ./path/image.png 都是相对路径
+    websiteIcon: 
+
     mainSections:
         - post
     featuredImageField: image
@@ -64,6 +73,7 @@ params:
 
     dateFormat:
         published: Jan 02, 2006
+        lastMod: Jan 02, 2006 15:04 MST
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
@@ -77,6 +87,7 @@ params:
     article:
         math: false
         toc: true
+        lastModTime: true
         readingTime: true
         license:
             enabled: true
