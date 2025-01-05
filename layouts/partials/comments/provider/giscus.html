@@ -1,4 +1,6 @@
 {{- with .Site.Params.comments.giscus -}}
+<!--
+这个是原来的版本，语言如果换成中文的话要写 zh-CN，CN 要大写，下面那个我做了一下调整
 <script
     src="https://giscus.app/client.js"
     data-repo="{{- .repo -}}"
@@ -12,6 +14,36 @@
     data-input-position="{{- default `top` .inputPosition -}}"
     data-theme="{{- default `light` .lightTheme -}}"
     data-lang="{{- default (default `en` $.Language.LanguageCode) .lang -}}"
+    data-loading="{{- .loading -}}"
+    crossorigin="anonymous"
+    async
+></script>
+-->
+
+<script
+    src="https://giscus.app/client.js"
+    data-repo="{{- .repo -}}"
+    data-repo-id="{{- .repoID -}}"
+    data-category="{{- .category -}}"
+    data-category-id="{{- .categoryID -}}"
+    data-mapping="{{- default `title` .mapping -}}"
+    data-strict="{{- default 0 .strict -}}"
+    data-reactions-enabled="{{- default 1 .reactionsEnabled -}}"
+    data-emit-metadata="{{- default 0 .emitMetadata -}}"
+    data-input-position="{{- default `top` .inputPosition -}}"
+    data-theme="{{- default `light` .lightTheme -}}"
+    
+    {{ $language := (default (default `en` $.Language.LanguageCode) .lang) }}
+    {{ $newStr := "" }}
+    {{ if gt ($language | strings.CountRunes) 2 }}
+        {{ $leftStr := slicestr $language 0 2 }}
+        {{ $rightStr := upper (slicestr $language 3 5) }}
+        {{ $newStr = printf "%s-%s" $leftStr $rightStr }}
+    {{ else }}
+        {{ $newStr = $language }}
+    {{ end }}
+    data-lang="{{ $newStr }}"
+
     data-loading="{{- .loading -}}"
     crossorigin="anonymous"
     async
